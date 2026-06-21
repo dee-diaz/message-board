@@ -6,13 +6,13 @@ const indexRouter = require('./routes/indexRouter');
 const messageRouter = require('./routes/messageRouter');
 
 // Middleware
-app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // View engine
 app.set('view engine', 'ejs');
-
 
 app.use('/', indexRouter);
 app.use('/chat', messageRouter);
