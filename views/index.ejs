@@ -36,11 +36,17 @@
               placeholder="Name"
               minlength="1"
             />
+            <% if (typeof errors !== 'undefined') { %>
+          <% errors.forEach(error => { %>
+            <p class="error"><%= error.msg %></p>
+          <% }) %>
+        <% } %>
           </fieldset>
-
           <button class="btn-main" type="submit">Enter chat</button>
         </form>
+
       </div>
     </main>
+
   </body>
 </html>
