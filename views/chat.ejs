@@ -1,24 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Room</title>
-</head>
-<body>
-  <main>
-    <div class="container">
-      <ul>
-      <% if (messages && messages.length > 0) { %>
-      <% messages.forEach(function(message) { %>
-        <li><%= message.text %></li>
-      <% }) %>
-      <% } else { %>
-        <li>No messages yet</li>
-      <% } %>
-    </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Chat room</title>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="user-badge">
+        <span class="avatar" aria-hidden="true"><%= userName[0].toUpperCase() %></span>
+        <span class="user-badge__name"><%= userName %></span>
+      </div>
+    </header>
 
-    </div>
-  </main>
-</body>
+    <main class="chat-shell">
+      <section class="chat-window" aria-label="Chat room">
+        <header class="chat-header">
+          <div class="chat-title">
+            <svg class="icon" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"></path>
+            </svg>
+            <span>Chat room</span>
+          </div>
+          <a class="chat-close" href="/" aria-label="Leave chat room">
+            <svg class="icon" viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true">
+              <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+            </svg>
+          </a>
+        </header>
+        <ul class="message-list">
+          <li class="message-row">
+            <article class="message">
+              <header class="message-meta">
+                <span class="message-author">Laura</span>
+                <span class="message-time">10:12</span>
+              </header>
+              <p class="message-text">The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions. The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions</p>
+            </article>
+          </li>
+
+          <li class="message-row">
+            <article class="message">
+              <header class="message-meta">
+                <span class="message-author">Steven</span>
+                <span class="message-time">10:12</span>
+              </header>
+              <p class="message-text">We should give it a go sometime</p>
+            </article>
+          </li>
+
+          <li class="message-row message-row--own">
+            <article class="message">
+              <header class="message-meta">
+                <span class="message-author">Dee</span>
+                <span class="message-time">12:45</span>
+              </header>
+              <p class="message-text">Please explain, I don&rsquo;t get it 😒</p>
+            </article>
+          </li>
+
+          <li class="message-row">
+            <article class="message">
+              <header class="message-meta">
+                <span class="message-author">Charlie</span>
+                <span class="message-time">20:02</span>
+                <span class="message-day">Yesterday</span>
+              </header>
+              <p class="message-text">The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions. The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions</p>
+            </article>
+          </li>
+
+          <li class="message-row">
+            <article class="message">
+              <header class="message-meta">
+                <span class="message-author">Izzy</span>
+                <span class="message-time">22:12</span>
+                <span class="message-day">Yesterday</span>
+              </header>
+              <p class="message-text">Easy to use these types of dot text symbols, When you&rsquo;re coding, writing, or messaging.</p>
+            </article>
+          </li>
+
+          <li class="message-row">
+            <article class="message">
+              <header class="message-meta">
+                <span class="message-author">Jason</span>
+                <span class="message-time">10:12</span>
+              </header>
+              <p class="message-text">I&rsquo;m still waiting for the confirmation from the boss...so idk 🙈</p>
+            </article>
+          </li>
+
+          <li class="message-row message-row--own">
+            <article class="message">
+              <header class="message-meta">
+                <span class="message-author">Dee</span>
+                <span class="message-time">12:45</span>
+              </header>
+              <p class="message-text">This is a message right? Please GTFO! Nah mean?</p>
+            </article>
+          </li>
+        </ul>
+
+        <form class="composer" action="/chat" method="POST">
+          <div class="composer-field">
+            <input
+              class="composer-input"
+              type="text"
+              name="message"
+              placeholder="Type a message"
+              autocomplete="off"
+              aria-label="Type a message"
+            />
+            <button class="send-button" type="submit">
+              <svg class="icon" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.42,29.84l85.62,40.55,40.55,85.62A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-84.59,48-48a8,8,0,0,0-11.31-11.31l-48,48L21.84,96.06l-.07,0,.14,0L213.81,40Z"></path>
+              </svg>
+              <span>Send</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>
