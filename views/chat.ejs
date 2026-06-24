@@ -30,77 +30,21 @@
           </a>
         </header>
         <ul class="message-list">
-          <li class="message-row">
-            <article class="message">
-              <header class="message-meta">
-                <span class="message-author">Laura</span>
-                <span class="message-time">10:12</span>
-              </header>
-              <p class="message-text">The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions. The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions</p>
-            </article>
-          </li>
-
-          <li class="message-row">
-            <article class="message">
-              <header class="message-meta">
-                <span class="message-author">Steven</span>
-                <span class="message-time">10:12</span>
-              </header>
-              <p class="message-text">We should give it a go sometime</p>
-            </article>
-          </li>
-
-          <li class="message-row message-row--own">
-            <article class="message">
-              <header class="message-meta">
-                <span class="message-author">Dee</span>
-                <span class="message-time">12:45</span>
-              </header>
-              <p class="message-text">Please explain, I don&rsquo;t get it 😒</p>
-            </article>
-          </li>
-
-          <li class="message-row">
-            <article class="message">
-              <header class="message-meta">
-                <span class="message-author">Charlie</span>
-                <span class="message-time">20:02</span>
-                <span class="message-day">Yesterday</span>
-              </header>
-              <p class="message-text">The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions. The ellipsis is a separate glyph consisting of three dots. It is used for indicating omissions</p>
-            </article>
-          </li>
-
-          <li class="message-row">
-            <article class="message">
-              <header class="message-meta">
-                <span class="message-author">Izzy</span>
-                <span class="message-time">22:12</span>
-                <span class="message-day">Yesterday</span>
-              </header>
-              <p class="message-text">Easy to use these types of dot text symbols, When you&rsquo;re coding, writing, or messaging.</p>
-            </article>
-          </li>
-
-          <li class="message-row">
-            <article class="message">
-              <header class="message-meta">
-                <span class="message-author">Jason</span>
-                <span class="message-time">10:12</span>
-              </header>
-              <p class="message-text">I&rsquo;m still waiting for the confirmation from the boss...so idk 🙈</p>
-            </article>
-          </li>
-
-          <li class="message-row message-row--own">
-            <article class="message">
-              <header class="message-meta">
-                <span class="message-author">Dee</span>
-                <span class="message-time">12:45</span>
-              </header>
-              <p class="message-text">This is a message right? Please GTFO! Nah mean?</p>
-            </article>
-          </li>
+          <% if (fMessages.length > 0) { %>
+            <% fMessages.forEach(function(message) { %>
+              <li class="message-row <%= message.user === userName ? ' message-row--own' : '' %>">
+                <article class="message">
+                  <header class="message-meta">
+                    <span class="message-author"><%= message.user %></span>
+                    <span class="message-time"><%= message.added %></span>
+                  </header>
+                  <p class="message-text"><%= message.text %></p>
+                </article>
+              </li>
+            <% }) %>
+          <% } else { %>
+                <p class="messages-empty">No messages yet...</p>
+               <% } %>
         </ul>
 
         <form class="composer" action="/chat" method="POST">
@@ -123,5 +67,6 @@
         </form>
       </section>
     </main>
+    
   </body>
 </html>
