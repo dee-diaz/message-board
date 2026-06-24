@@ -82,6 +82,13 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
 }
 
 img,
@@ -353,7 +360,7 @@ select {
 
 .message-text {
   font-size: 0.875rem;
-  line-height: 1.4286;
+  line-height: 1.4;
   color: var(--clr-text-primary);
 }
 
