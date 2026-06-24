@@ -32,7 +32,7 @@
         <ul class="message-list">
           <% if (fMessages.length > 0) { %>
             <% fMessages.forEach(function(message) { %>
-              <li class="message-row <%= message.user === userName ? ' message-row--own' : '' %>">
+              <li class="message-row <%= message.user === userName ? 'message-row--own' : '' %>">
                 <article class="message">
                   <header class="message-meta">
                     <span class="message-author"><%= message.user %></span>
