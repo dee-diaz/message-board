@@ -73,6 +73,7 @@
       list.scrollTop = list.scrollHeight;
       const form = document.querySelector('.composer');
       const input = document.querySelector('.composer-input');
+      input.focus();
       form.addEventListener('submit', (e) => {
         if (!input.value) e.preventDefault();
       })
