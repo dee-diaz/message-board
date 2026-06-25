@@ -30,4 +30,9 @@ app.get('/{*splat}', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(PORT, () => console.log(`'listening for requests on port ${PORT}'`));
+app.listen(PORT, (error) => {
+  if (error) {
+    throw error;
+  }
+  console.log(`Express app listening on port ${PORT}!`);
+});
