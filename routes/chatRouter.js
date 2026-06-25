@@ -1,12 +1,14 @@
-const messages = require('../data/messages');
 const express = require('express');
 const router = express.Router();
 const chatController = require('../controllers/chatController');
+const { body } = require('express-validator');
 
 router.get('/', chatController.get);
 
-router.post('/', (req, res) => {
-  console.log('Message sent');
-});
+router.post(
+  '/',
+  body('message').trim().notEmpty().withMessage('Enter your message'),
+  chatController.post,
+);
 
 module.exports = router;
