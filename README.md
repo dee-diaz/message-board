@@ -2,7 +2,11 @@
 
 A small real-time-feeling chat room built with **Express** and **EJS**. A visitor enters their name, gets dropped into a shared chat room, and can read and post messages. Identity is kept in a server-side session, and messages live in memory for the life of the server process.
 
+**Live demo:** <https://message-board-i10h.onrender.com>
+
 > Built as a learning project to practice Express routing, the MVC pattern, server-side sessions, form validation, and server-rendered views.
+>
+> _Hosted on Render's free tier — the first request after a period of inactivity may take a few seconds to wake the server._
 
 ## Features
 
