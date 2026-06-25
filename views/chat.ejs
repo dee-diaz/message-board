@@ -68,5 +68,14 @@
       </section>
     </main>
     
+    <script>
+      const list = document.querySelector('.message-list');
+      list.scrollTop = list.scrollHeight;
+      const form = document.querySelector('.composer');
+      const input = document.querySelector('.composer-input');
+      form.addEventListener('submit', (e) => {
+        if (!input.value) e.preventDefault();
+      })
+    </script>
   </body>
 </html>
