@@ -27,7 +27,7 @@ app.use('/', indexRouter);
 app.use('/chat', chatRouter);
 
 app.get('/{*splat}', (req, res) => {
-  res.status(404).send('<h1>Oops, page not found</h1>');
+  res.redirect('/');
 });
 
 app.listen(PORT, () => console.log(`'listening for requests on port ${PORT}'`));
